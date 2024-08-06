@@ -20,7 +20,7 @@ class Pump(object):
 
     def get_response(self):
         # TODO timeouts, polling, etc...
-        msg = self.conn.read_until('\x03')
+        msg = self.conn.read_until('\x03').decode('utf-8')
         print("read <- %s" % msg)
         return self.protocol.parse_response(msg)
 

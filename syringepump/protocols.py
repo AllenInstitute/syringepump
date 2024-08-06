@@ -14,9 +14,10 @@ safe protocol has crc16 TODO
 
 class Basic(object):
     def format_message(self, msg):
-        assert isinstance(msg, (str, unicode))
+        assert isinstance(msg, str)
         if len(msg) and msg[-1] != '\r':
-            return msg + '\r'
+            msg = msg + '\r'
+        msg = msg.encode('utf-8')
         return msg
 
     def parse_response(self, response):
